@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Калькулятор</title>
+</head>
+<style>
+  body{
+    background-color: black;
+    color:white;
+    display:flex; /* делает страницу гибким*/
+    justify-content:center; /* расположение по центру */
+  }
+  .calculator{
+    background-color: #1c1c1c;
+    width: 320px;    /* ширина калькулятора*/
+    height: 500px;   /* высота */
+    padding: 20px;   /* внутренний отступ*/
+    border-radius: 10px;
+  }
+  #display{
+    background-color: black;
+    font-size:48px;  /* размер шрифта */
+    text-align : right;
+    padding:20px;
+    border-radius: 20px;
+    margin-bottom: 10px; /* внешний отступ снизу */
+  }
+  .buttons{
+    display:grid;
+    grid-template-columns: repeat(4,1fr);
+    gap:10px;
+  }
+  button{
+    background-color: #333;
+    color:white;
+    font-size: 24px;
+    border-radius: 50%;
+    padding:20px;
+    border: none;
+    cursor:pointer;
+  }
+  button.zero{
+    grid-column: span 2; /* занимает 1 строку на 2 столбиках */
+    border-radius: 35px;
+  }
+  button.grayBtn{
+    background-color: #777;
+    color:black;
+  }
+  button.orangeBtn{
+    background-color: #f90;
+    color:black;
+  }
+  button:hover {
+    background-color: blue;
+  }
+  .myHistory{
+  padding:10px;
+  margin-left:20px;
+  border-radius:10px;
+    color:white;
+    background-color:#2c2c2c;
+  }
+  .hist:hover{
+    color:red;
+  }
+</style>
+<body>
+  <div class="calculator">
+    <div id="display">{{ result if result else '0'}}</div>
+    <form method="post">
+      <input type="hidden" name="expression" value="{{expression}}">
+      <div class="buttons">
+      <button type="submit" name="button" class="grayBtn" value="AC">AC</button>
+      <button type="submit" name="button" class="grayBtn">+/-</button>
+      <button type="submit" name="button" class="grayBtn">%</button>
+      <button type="submit" name="button" class="orangeBtn" value="/">/</button>
+
+      <button type="submit" name="button" value="7">7</button>
+      <button type="submit" name="button" value="8">8</button>
+      <button type="submit" name="button" value="9">9</button>
+      <button type="submit" name="button" class="orangeBtn" value="*">x</button>
+
+      <button type="submit" name="button" value="4">4</button>
+      <button type="submit" name="button" value="5">5</button>
+      <button type="submit" name="button" value="6">6</button>
+      <button type="submit" name="button" class="orangeBtn" value="-">-</button>
+
+      <button type="submit" name="button" value="1">1</button>
+      <button type="submit" name="button" value="2">2</button>
+      <button type="submit" name="button" value="3">3</button>
+      <button type="submit" name="button" class="orangeBtn" value="+">+</button>
+
+      <button type="submit" name="button" class="zero" value="0">0</button>
+      <button type="submit" name="button" value=".">,</button>
+      <button type="submit" name="button" class="orangeBtn" value="=">=</button>
+
+    </div>
+    </form>
+
+  </div>
+
+<div class="myHistory">
+  <h3>История запроса</h3>
+  {% if history %}
+    {% for item in history %}
+      <p class="hist">{{item}}</p>
+    {% endfor %}
+
+  {% endif %}
+</div>
+
+</body>
+</html>

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Вход</title>
+</head>
+<style>
+    form{
+        background-color:#b0f7e3; /* фон */
+        padding:30px;          /* отступ */
+        width:430px;           /* ширина */
+        font-size:25px;        /* размер шрифта */
+        margin:0 auto;     /* расположение по центру*/
+    }
+    button{
+        background-color: green;
+        color:white;
+        padding:10px;
+        font-size:20px;
+        border-radius:10px;  /* круглые углы */
+    }
+    h2{
+        text-align:center;  /* расположение по цегтру */
+        color:blue;
+    }
+    input{
+        font-size:20px;
+    }
+    p{
+    color:red;
+    font-size:20px;
+    text-align:center;
+    }
+</style>
+<body>
+    <h2>Вход на сайт</h2>
+    <form method="post">
+        <label>Введите почту:</label>
+        <input type="email" name="email">
+       <br><br>
+        <label>Введите пароль:</label>
+        <input type="password" name="password">
+        <br> <br>
+        <button>Войти</button>
+    </form>
+<p> {{error}}</p>
+
+
+</body>
+</html>
